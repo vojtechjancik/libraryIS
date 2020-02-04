@@ -7,6 +7,6 @@ import java.util.List;
 public class HelperClass {
 
     public static List<String> commands() {
-        return Arrays.asList("help", "exit", "newBook", "newReader", "findBook");
+        return Arrays.asList("help", "exit", "newBook", "newReader", "findBook", "findReader");
     }
 }

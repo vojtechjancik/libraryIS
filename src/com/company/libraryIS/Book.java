@@ -56,7 +56,6 @@ public class Book {
         Database.books.add(newBookCreate);
 
 
-
         System.out.print("New book is: " + Database.books);
 
          /*System.out.println("Check your input: " + "Name: " + bookName + ", " + "Author: " + author + ", " + "Paperback: "
@@ -75,12 +74,23 @@ public class Book {
     }
 
     public static void newBookDefault() {
+       String bookName = "BookName";
+       String author = "Author";
+       String publisher = "Publisher";
+       String language = "Language";
+       String genre = "Genre";
+       boolean isBorrowed = false;
+
+       Book defaultBook = new Book(bookName, author, publisher, language, genre, isBorrowed);
+
+       Database.defaultbook.add(defaultBook);
     }
 
     public static void showBook() {
-        System.out.println(Database.books);
+       System.out.println(Database.books);
     }
-    public static void findBook() {
+
+    public static void findBook() { //WIP - show first strings in readable way
        Scanner findBook = new Scanner(System.in);
        System.out.print("Write a name of the book, which you want to find: ");
        String findingBook = findBook.nextLine();
