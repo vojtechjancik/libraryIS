@@ -17,7 +17,7 @@ public class Main {
         while (true) {
             switch (command = sc.nextLine()) {
                 case "help" :
-                    System.out.println("Commands are: " + HelperClass.commands());
+                    System.out.println("Commands are: " + HelperClass.commands()); ůlkjů
                     break;
                 case "newBook":  newBook();
                     break;
