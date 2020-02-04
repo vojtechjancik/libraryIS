@@ -1,2 +1,0 @@
-# libraryIS
-Library Information System
