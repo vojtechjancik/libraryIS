@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    public static List<Book> books = new ArrayList<>(); //proměnná jedinečná v celém projektu
+    public static List<Book> books = new ArrayList<>(); //unique variable in whole project
     public static List<Reader> readers = new ArrayList<>();
-    public static List<Book> defaultbook = new ArrayList<>();
-    public static List<Reader> defaultreader = new ArrayList<>();
+    public static List<Book> defaultBook = new ArrayList<>();
+    public static List<Reader> defaultReader = new ArrayList<>();
 }
