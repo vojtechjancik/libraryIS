@@ -26,6 +26,7 @@ public class Book {
         this.isBorrowed = isBorrowed;
     }
 
+    @Override
     public String toString() { //method for converting list to String
         return bookName + ", " + author + ", " + publisher + ", " + language + ", " + genre + ", " + isBorrowed;
     }

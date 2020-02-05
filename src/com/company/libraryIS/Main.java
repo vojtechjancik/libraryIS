@@ -5,6 +5,7 @@ import javax.xml.crypto.Data;
 import java.util.Scanner;
 
 import static com.company.libraryIS.Book.*;
+import static com.company.libraryIS.LibraryBranch.showBranches;
 import static com.company.libraryIS.Reader.*;
 
 public class Main {
@@ -34,10 +35,13 @@ public class Main {
                     break;
                 case "showDefaultReader" : showDefaultReader(); //start a method showDefaultReader from class Reader
                     break;
+                case "showBranches" : showBranches(); //showBranchesInLibraryNetwork
+                    break;
                 case "exit" : System.exit(0); //exit the program
                 default: System.out.println("Wrong command."); //in other case, if you put a wrong command in
             }
             System.out.print("Which command do you want to use?: "); //asking again after loop
+
         }
     }
 }

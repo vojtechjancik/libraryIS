@@ -30,6 +30,7 @@ public class Reader {
         this.email = email;
     }
 
+    @Override
     public String toString() { //method for converting list to String
         return firstName + ", " + lastName + ", " + telephoneNumber + ", " + email;
     }
