@@ -1,6 +1,7 @@
 package com.company.libraryIS;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Book {
@@ -74,31 +75,39 @@ public class Book {
         }
     }
 
-    public static void newBookDefault() { //set a default book to the variables
-       String bookName = "DefaultBookName";
-       String author = "DefaultAuthor";
-       String publisher = "DefaultPublisher";
-       String language = "DefaultLanguage";
-       String genre = "DefaultGenre";
-       boolean isBorrowed = false;
-
-        Book defaultBook = new Book(bookName, author, publisher, language, genre, isBorrowed); //creating a new Object defaultBook
-        Database.defaultBook.add(defaultBook); //adding a new Object defaultBook to the List
+    public static void createBookDefault() { //set a default book to the variables
+        Book defaultBook = new Book("DefaultBookName", "DefaultAuthor", "DefaultPublisher","DefaultLanguage", "DefaultGenre", false); //creating a new Object defaultBook
+        Database.books.add(defaultBook); //adding a new Object defaultBook to the List
+        Book defaultBook2 = new Book("DefaultBookName2", "DefaultAuthor2","DefaultPublisher2", "DefaultLanguage2", "DefaultGenre2", true);
+        Database.books.add(defaultBook2);
     }
 
-    public static void showDefaultBook() { //should show your default book
-       System.out.println("Default book is: " + Database.defaultBook.toString()); // using toString for better reading
+    public static void showDefaultBooks() { //should show your default book
+       System.out.println("Default books are: " + Database.books.toString()); // using toString for better reading
     }
 
     public static void findBook() { //WIP - find book from database
-       Scanner findBook = new Scanner(System.in);
+       Scanner scanner = new Scanner(System.in);
        System.out.print("Write a name of the book, which you want to find: ");
-       String findingBook = findBook.nextLine();
-        if (Database.defaultBook.contains(findingBook)) {
+       String name = scanner.nextLine();
+       //add for cycle
+       /* if (Database.books.equals(findBook)) {
             System.out.println("Book exists.");
         } else {
             System.out.println("Book doesn't exists.");
+        } */
+        boolean listContainsInput = false;
+        for  (int i = 0; i < Database.books.size(); i++){
+            if (name.equals(Database.books.get(i).bookName)) {
+                listContainsInput = true;
+                break;
+            }
         }
+        if(listContainsInput) {
+                System.out.println("Book is in the library system.");
+            } else {
+                System.out.println("Book is not in the library system.");
+            }
     }
 
     public void isAvailable() {

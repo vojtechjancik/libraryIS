@@ -78,28 +78,30 @@ public class Reader {
     }
 
     public static void newReaderDefault() {
-        String firstName = "DefaultFirstName";
-        String lastName = "DefaultLastName";
-        String telephoneNumber = "Default123456789";
-        String email = "DefaultEmail";
+        String firstName;
+        String lastName;
+        String telephoneNumber;
+        String email;
 
-        Reader defaultReader = new Reader(firstName, lastName, telephoneNumber, email);
-        Database.defaultReader.add(defaultReader);
+        Reader defaultReader = new Reader(firstName = "DefaultFirstName", lastName = "DefaultLastName", telephoneNumber = "Default123456789", email = "DefaultEmail");
+        Database.readers.add(defaultReader);
+        Reader defaultReader2 = new Reader(firstName = "DefaultFirstName2", lastName = "DefaultLastName2", telephoneNumber = "Default123456789", email = "DefaultEmail2");
+        Database.readers.add(defaultReader2);
     }
 
     public static void findReader() {  // WIP - show first strings in readable way
         Scanner scanner = new Scanner(System.in);
         System.out.print("Write please reader's first and last name: ");
         String findingReader = scanner.nextLine();
-        if(Database.defaultReader.contains(findingReader)) {
+        if(Database.readers.contains(findingReader)) {
             System.out.println("Reader with name is exists.");
         } else {
             System.out.println("Reader with this name is not exists.");
         }
     }
 
-    public static void showDefaultReader() {
-        System.out.println("Default reader is: " + Database.defaultReader.toString());
+    public static void showDefaultReaders() {
+        System.out.println("Default reader is: " + Database.readers.toString());
     }
     public void readerHasValidAccount() {
 

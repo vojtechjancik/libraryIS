@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);  //create scanner for input
         String command; //new variable
-        newBookDefault(); //creating a default book
+        createBookDefault(); //creating a default book
         newReaderDefault(); //creating a default reader
 
         System.out.print("Welcome in Library information system. Please write a command (If you don't know any commands, write help): "); //first line after run
@@ -31,9 +31,9 @@ public class Main {
                     break;
                 case "findReader" : findReader(); //start a method findReader from class Reader
                     break;
-                case "showDefaultBook" : showDefaultBook(); //start a method showDefaultBook from class Book
+                case "showDefaultBooks" : showDefaultBooks(); //start a method showDefaultBook from class Book
                     break;
-                case "showDefaultReader" : showDefaultReader(); //start a method showDefaultReader from class Reader
+                case "showDefaultReaders" : showDefaultReaders(); //start a method showDefaultReader from class Reader
                     break;
                 case "showBranches" : showBranches(); //showBranchesInLibraryNetwork
                     break;
