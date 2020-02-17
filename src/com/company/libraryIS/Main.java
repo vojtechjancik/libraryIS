@@ -37,11 +37,14 @@ public class Main {
                     break;
                 case "showBranches" : showBranches(); //showBranchesInLibraryNetwork
                     break;
+                case "isBookAvailable" : isAvailable();
+                    break;
+                case "findAuthor" : getAuthor();
+                    break;
                 case "exit" : System.exit(0); //exit the program
                 default: System.out.println("Wrong command."); //in other case, if you put a wrong command in
             }
             System.out.print("Which command do you want to use?: "); //asking again after loop
-
         }
     }
 }

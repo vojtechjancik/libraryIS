@@ -78,32 +78,42 @@ public class Reader {
     }
 
     public static void newReaderDefault() {
-        String firstName;
-        String lastName;
-        String telephoneNumber;
-        String email;
-
-        Reader defaultReader = new Reader(firstName = "DefaultFirstName", lastName = "DefaultLastName", telephoneNumber = "Default123456789", email = "DefaultEmail");
+        Reader defaultReader = new Reader("DefaultFirstName",  "DefaultLastName", "Default123456789", "DefaultEmail");
         Database.readers.add(defaultReader);
-        Reader defaultReader2 = new Reader(firstName = "DefaultFirstName2", lastName = "DefaultLastName2", telephoneNumber = "Default123456789", email = "DefaultEmail2");
+        Reader defaultReader2 = new Reader("DefaultFirstName2", "DefaultLastName2", "Default123456789", "DefaultEmail2");
         Database.readers.add(defaultReader2);
+        Reader defaultReader3 = new Reader("DefaultFirstName3", "DefaultLastName3", "Default123456789", "DefaultEmail3");
+        Database.readers.add(defaultReader3);
     }
 
-    public static void findReader() {  // WIP - show first strings in readable way
+    public static void findReader() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Write please reader's first and last name: ");
-        String findingReader = scanner.nextLine();
-        if(Database.readers.contains(findingReader)) {
-            System.out.println("Reader with name is exists.");
+        System.out.print("Write a last name of the reader, which you want to find: ");
+        String name = scanner.nextLine();
+        boolean listContainsInput = false;
+        for  (int i = 0; i < Database.readers.size(); i++){
+            if (name.equals(Database.readers.get(i).lastName)) {
+                listContainsInput = true;
+                break;
+            }
+        }
+        if(listContainsInput) {
+            System.out.println("Reader is in the library system.");
         } else {
-            System.out.println("Reader with this name is not exists.");
+            System.out.println("Reader is not in the library system.");
         }
     }
 
     public static void showDefaultReaders() {
+
         System.out.println("Default reader is: " + Database.readers.toString());
     }
+
     public void readerHasValidAccount() {
+
+    }
+
+    public static void borrowBook() {  //WIP
 
     }
 
