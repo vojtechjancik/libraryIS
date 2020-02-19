@@ -14,8 +14,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);  //create scanner for input
         String command; //new variable
         createBookDefault(); //creating a default book
-        newReaderDefault(); //creating a default reader
-
+        createReaderDefault(); //creating a default reader
+        //readerLogin();
         System.out.print("Welcome in Library information system. Please write a command (If you don't know any commands, write help): "); //first line after run
 
         while (true) { // infinite loop
@@ -40,6 +40,10 @@ public class Main {
                 case "isBookAvailable" : isAvailable();
                     break;
                 case "findAuthor" : getAuthor();
+                    break;
+                case "borrowABook" : borrowABook();
+                    break;
+                case "borrowedBooks" : whichBooksHasReaderBorrowed();
                     break;
                 case "exit" : System.exit(0); //exit the program
                 default: System.out.println("Wrong command."); //in other case, if you put a wrong command in

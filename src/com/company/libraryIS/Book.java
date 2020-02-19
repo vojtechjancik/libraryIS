@@ -1,6 +1,10 @@
 package com.company.libraryIS;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
+
+import static com.company.libraryIS.Reader.readerLogin;
 
 public class Book {
     String bookName; //defining variables
@@ -12,8 +16,9 @@ public class Book {
     int released; */
     String genre;
     boolean isBorrowed = false;
+    int readerID;
 
-   public Book(String bookName, String author, String publisher, String language, String genre, boolean isBorrowed) { //contructor with variables
+   public Book(String bookName, String author, String publisher, String language, String genre, boolean isBorrowed, int readerID) { //contructor with variables
         this.bookName = bookName;
         this.author = author;
         this.publisher = publisher;
@@ -23,11 +28,12 @@ public class Book {
         this.released = released; */
         this.genre = genre;
         this.isBorrowed = isBorrowed;
+        this.readerID = readerID;
     }
 
     @Override
     public String toString() { //method for converting list to String
-        return bookName + ", " + author + ", " + publisher + ", " + language + ", " + genre + ", " + isBorrowed;
+        return bookName + ", " + author + ", " + publisher + ", " + language + ", " + genre + ", " + isBorrowed + ", " + readerID;
     }
 
     public static void newBook() { //creating new book
@@ -56,7 +62,7 @@ public class Book {
         boolean isBorrowed = false;
         System.out.println();
 
-        Book newBookCreate = new Book(bookName, author, publisher, language, genre, isBorrowed);  //creating a new Object
+        Book newBookCreate = new Book(bookName, author, publisher, language, genre, isBorrowed, 999999);  //creating a new Object
 
         System.out.println("New book is: " + newBookCreate + ".");
 
@@ -73,11 +79,11 @@ public class Book {
     }
 
     public static void createBookDefault() { //set a default book to the variables
-        Book defaultBook = new Book("DefaultBookName", "DefaultAuthor", "DefaultPublisher","DefaultLanguage", "DefaultGenre", false); //creating a new Object defaultBook
+        Book defaultBook = new Book("DefaultBookName", "DefaultAuthor", "DefaultPublisher","DefaultLanguage", "DefaultGenre", false, 999999); //creating a new Object defaultBook
         Database.books.add(defaultBook); //adding a new Object defaultBook to the List
-        Book defaultBook2 = new Book("DefaultBookName2", "DefaultAuthor2","DefaultPublisher2", "DefaultLanguage2", "DefaultGenre2", true);
+        Book defaultBook2 = new Book("DefaultBookName2", "DefaultAuthor2","DefaultPublisher2", "DefaultLanguage2", "DefaultGenre2", true, 999999);
         Database.books.add(defaultBook2);
-        Book defaultBook3 = new Book("DefaultBookName3", "DefaultAuthor3", "DefaultPublisher3", "DefaultLanguage3", "DefaultGenre3", false);
+        Book defaultBook3 = new Book("DefaultBookName3", "DefaultAuthor3", "DefaultPublisher3", "DefaultLanguage3", "DefaultGenre3", false, 999999);
         Database.books.add(defaultBook3);
     }
 
@@ -87,7 +93,7 @@ public class Book {
 
     public static Book findBook() {
        Scanner scanner = new Scanner(System.in);
-       System.out.print("Write a name of the book, which you want to find: ");
+       System.out.print("Write a name of the book, which you want to find or borrow: ");
        String name = scanner.nextLine();
        for  (int i = 0; i < Database.books.size(); i++){
           Book book =  Database.books.get(i);
@@ -123,5 +129,29 @@ public class Book {
            }
        }
        return null;
+    }
+
+    public static void borrowABook() {
+       Reader readerLogin = readerLogin();
+       Book bookIsFound = findBook();
+        if (bookIsFound != null) {
+            if (bookIsFound.isBorrowed) {
+                System.out.println("Book is borrowed by someone else.");
+            } else {
+                bookIsFound.isBorrowed = true;
+                if(readerLogin != null) {
+                    bookIsFound.readerID = readerLogin.readerID;
+
+                    Date date = new Date();
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(date);
+                    cal.add(Calendar.MONTH, 1);
+
+                    java.util.Date expirationDate = cal.getTime();
+
+                    System.out.println("You have borrowed a book " + bookIsFound.bookName + " until " + expirationDate);
+                }
+            }
+        }
     }
 }
